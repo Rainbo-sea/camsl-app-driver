@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>起始页</title>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+</head>
+
+<body></body>
+<script type="text/javascript" src="./script/jquery.min.js"></script>
+<script type="text/javascript" src="./script/rem.js"></script>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/common.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        fnReady();
+
+        var isautologin = $api.getStorage('isautologin');
+        //判断是否自动登录
+        if (isautologin == 0) {
+            fnOpenMainWin();
+        } else {
+            fnOpenLogin();
+        }
+
+    };
+    //打开主窗口
+    function fnOpenMainWin() {
+        api.openWin({
+            name: 'main',
+            url: './html/main.html',
+            slidBackEnabled: false,
+            animation: {
+                type: 'fade'
+            }
+        });
+    }
+
+
+    //打开登录页面
+    function fnOpenLogin() {
+        api.openWin({
+            name: 'login',
+            url: './html/login/login.html',
+            bounces: false,
+            slidBackEnabled: false,
+            animation: {
+                type: 'fade'
+            }
+        });
+    }
+</script>
+
+</html>
